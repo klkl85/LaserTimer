@@ -33,8 +33,8 @@ bool BOOL_onJob = false;                                      // display prep fl
 bool BOOL_firstRun = true;                                    // which screen to display
 float cost = 0.0;                                             // keeps track of cumulative cost of laser use
 float runningTime = 0.0;                                      // keeps track of laser firing time
-float costRatePerMinute = 100.0;                              // COST PER MINUTE IN PENCE
-int PollingIntervalMS = 100;                                  // How often to check for laser firing
+float costRatePerMinute = 15.0;                              // COST PER MINUTE IN PENCE
+int PollingIntervalMS = 50;                                  // How often to check for laser firing
 float pollsPerMinute = (60.0 * 1000.0) / PollingIntervalMS;   // Used to calculate incremental cost
 float costPerPoll = (costRatePerMinute / pollsPerMinute);     // Incremental cost
 CRGB leds[3];
@@ -159,7 +159,7 @@ void screenUpdateCost() {
   //  Serial.println(pence);
 //  sprintf(poundsC, "%02d.", pounds);
 //  sprintf(penceC, "%02d", pence);
-  sprintf(costC, "%03d.%02d", pounds, pence);
+  sprintf(costC, "%d.%02d", pounds, pence);
   lcd.setCursor(8, 0);
   lcd.print(costC);
 
